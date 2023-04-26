@@ -4,6 +4,7 @@ def check_csv(file_list, path):
     error_list = []
 
     for file in file_list:
+        print("file", file)
         check = open(path+'\\'+file, 'r')
         lines = check.readlines()
         if len(lines) != 1:
@@ -15,20 +16,29 @@ def check_csv(file_list, path):
             error_list.append(file)
             print("size", len(fields))
             continue
-        try:
-            if type(fields[0])==type(5) and type(fields[1])== type(5):
-                error_list.append(file)
-                print("digits", fields[0].isnumeric(), type(fields[1]).isnumeric())
-                continue
-        except Exception as e:
-            if not fields[0].isnumeric() and not fields[0].isnumeric():
-                error_list.append(file)
-                print("digits", fields[0].isnumeric(), type(fields[1]).isnumeric())
-                continue
 
-        if type(fields[2])!=type("") and type(fields[3])!= type("") and type(fields[4])!=type("") and type(fields[5])!= type(""):
+        # testing the int fields
+        print("first_e", type(fields[0])!=type(5))
+        if fields[0].isnumeric()!=True:
             error_list.append(file)
-            print("string", fields[2].isnumeric())
+            continue
+        print("second_e", type(fields[0])!=type(5))
+        if fields[1].isnumeric()!=True:
+            error_list.append(file)
+            continue
+
+        # testing the strings fields
+        if type(fields[2])!=type(""):
+            error_list.append(file)
+            continue
+        if type(fields[3])!= type(""):
+            error_list.append(file)
+            continue
+        if type(fields[4])!=type(""):
+            error_list.append(file)
+            continue
+        if type(fields[5])!=type(""):
+            error_list.append(file)
             continue
 
     return error_list
