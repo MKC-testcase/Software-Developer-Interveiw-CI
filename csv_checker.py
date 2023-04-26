@@ -5,7 +5,7 @@ def check_csv(file_list, path):
 
     for file in file_list:
         print("file", file)
-        check = open(path+'\\'+file, 'r')
+        check = open(path+'/'+file, 'r')
         lines = check.readlines()
         if len(lines) != 1:
             error_list.append(file)
