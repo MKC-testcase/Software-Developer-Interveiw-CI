@@ -56,15 +56,12 @@ def write_errors(list_errors):
     f = open("csv_with_errors.txt", "w")
     f.writelines(list_errors)
 
-if __name__ == '__main__':
-    curr_dir = os.getcwd()
-    path = curr_dir + "/csv_here"
-    #path = curr_dir
-    files = os.listdir(path)
-    result = find_csv(files)
-    print(result)
-    wrong_files = check_csv(result, path)
-    print(wrong_files)
-    write_errors(wrong_files)
 
+curr_dir = os.getcwd()
+path = curr_dir + "/csv_here"
+#path = curr_dir
+files = os.listdir(path)
+result = find_csv(files)
+wrong_files = check_csv(result, path)
+write_errors(wrong_files)
 
